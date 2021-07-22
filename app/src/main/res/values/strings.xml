@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SummerSchoolHomework</string>
+    <string name="project_info_description">Сделать приложение, в котором люди, желающие приобрести домашнее животное, могут просматривать объявления заводчиков, отмечать понравившихся в раздел \"Любимые\" и связываться с продавцами в чате.</string>
+    <string name="student_info_name">Беспалова Виктория</string>
+    <string name="student_info_form">11 класс</string>
+    <string name="student_info_github">https://github.com/victobes</string>
+    <string name="header_skills">Навыки</string>
+    <string name="skill_info_kotlin">Kotlin</string>
+    <string name="skill_info_java">Java</string>
+    <string name="skill_info_python">Python</string>
+    <string name="skill_info_pascal">Pascal</string>
+    <string name="student_github_button">Github</string>
+</resources>
