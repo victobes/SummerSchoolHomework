@@ -1,6 +1,7 @@
 package com.example.summerschoolhomework.activity
 
 import android.os.Bundle
+import android.preference.DialogPreference
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +11,7 @@ import com.example.summerschoolhomework.adapter.ItemsListAdapter
 import com.example.summerschoolhomework.databinding.ActivityMainBinding
 import com.example.summerschoolhomework.model.Item
 
-class MainActivity : AppCompatActivity(), FilterDialogFragment.Callback{
+class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var itemsAdapter: ItemsListAdapter
@@ -19,11 +20,23 @@ class MainActivity : AppCompatActivity(), FilterDialogFragment.Callback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        Log.d("snail", stateAllHeader.toString())
+        itemsAdapter = ItemsListAdapter()
+        with(viewBinding.mainRecycler) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = itemsAdapter
+        }
+
+        supportFragmentManager.setFragmentResultListener("request_key", this) { key, bundle ->
+            stateAllHeader = bundle.getBoolean("extra_key")
+            itemsAdapter.submitList(itemsList)
+            Log.d("snail", itemsList.toString())
+            Log.d("snail", stateAllHeader.toString())
+        }
+
+        //Log.d("snail", stateAllHeader.toString())
         itemsList = savedInstanceState?.getParcelableArrayList(KEY_LIST)
             ?: listOf(
                 Item.StudentInfo(
@@ -41,14 +54,9 @@ class MainActivity : AppCompatActivity(), FilterDialogFragment.Callback{
                 Item.SkillInfo(getString(R.string.skill_info_pascal), 3.5f)
             )
 
-        itemsAdapter = ItemsListAdapter()
-        itemsAdapter.submitList(itemsList)
-        itemsAdapter.notifyDataSetChanged()
+        //itemsAdapter = ItemsListAdapter()
+        //itemsAdapter.submitList(itemsList)
 
-        with(viewBinding.mainRecycler) {
-            layoutManager = LinearLayoutManager(context)
-            adapter = itemsAdapter
-        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -60,7 +68,7 @@ class MainActivity : AppCompatActivity(), FilterDialogFragment.Callback{
         private const val KEY_LIST = "helper"
     }
 
-    override fun FilterIsUsed(stateAll:Boolean) {
-        stateAllHeader = stateAll
-    }
+    // fun isFilterUsed(stateAll: Boolean) {
+    //    stateAllHeader = stateAll
+    //}
 }

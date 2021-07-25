@@ -132,9 +132,12 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             viewBinding.filterImageButton.setOnClickListener {
                 FilterDialogFragment
                     .newInstance()
-                    .show((it.context as FragmentActivity).supportFragmentManager, FilterDialogFragment.TAG)
+                    .show(
+                        (it.context as FragmentActivity).supportFragmentManager,
+                        FilterDialogFragment.TAG
+                    )
             }
-            if (item.headerStateAll){
+            if (item.headerStateAll) {
                 viewBinding.filterImageButton.setImageResource(R.drawable.filter_icon)
             } else {
                 viewBinding.filterImageButton.setImageResource(R.drawable.filter_checked_icon)
