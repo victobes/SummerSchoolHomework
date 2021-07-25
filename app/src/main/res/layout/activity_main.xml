@@ -19,7 +19,7 @@
             android:background="#fff"
             android:elevation="8dp"
             android:textAlignment="center"
-            app:title="О себе"
+            app:title="@string/about_me_string"
             app:titleCentered="true"
             app:titleTextColor="#000" />
 

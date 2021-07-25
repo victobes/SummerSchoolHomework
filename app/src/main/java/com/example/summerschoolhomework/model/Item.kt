@@ -15,7 +15,7 @@ sealed interface Item : Parcelable {
     data class ProjectInfo(val projectDescription: String) : Item
 
     @Parcelize
-    data class HeaderSkills(val headerSkills: String) : Item
+    data class HeaderSkills(val headerSkills: String, val headerStateAll: Boolean) : Item
 
     @Parcelize
     data class SkillInfo(val studentSkill: String, val studentExperience: Float) : Item

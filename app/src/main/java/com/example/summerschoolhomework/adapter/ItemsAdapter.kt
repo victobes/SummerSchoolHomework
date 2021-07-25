@@ -4,7 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.summerschoolhomework.dialog.FilterDialogFragment
 import com.example.summerschoolhomework.R
 import com.example.summerschoolhomework.databinding.ItemHeaderSkillsBinding
 import com.example.summerschoolhomework.databinding.ItemProjectInfoBinding
@@ -90,6 +92,7 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             is Item.SkillInfo ->
                 VIEW_TYPE_STUDENT_SKILL
+
         }
 
     override fun getItemCount(): Int =
@@ -126,6 +129,16 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ) : RecyclerView.ViewHolder(viewBinding.root) {
         fun onBind(item: Item.HeaderSkills) {
             viewBinding.headerSkills.text = item.headerSkills
+            viewBinding.filterImageButton.setOnClickListener {
+                FilterDialogFragment
+                    .newInstance()
+                    .show((it.context as FragmentActivity).supportFragmentManager, FilterDialogFragment.TAG)
+            }
+            if (item.headerStateAll){
+                viewBinding.filterImageButton.setImageResource(R.drawable.filter_icon)
+            } else {
+                viewBinding.filterImageButton.setImageResource(R.drawable.filter_checked_icon)
+            }
         }
     }
 

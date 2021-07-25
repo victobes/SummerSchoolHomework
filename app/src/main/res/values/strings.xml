@@ -10,4 +10,10 @@
     <string name="skill_info_python">Python</string>
     <string name="skill_info_pascal">Pascal</string>
     <string name="student_github_button">Github</string>
+    <string name="filter_string">Фильтр</string>
+    <string name="less_one_year_string"><![CDATA[< 1 года]]></string>
+    <string name="two_years_string">2 года</string>
+    <string name="three_years_string">3 года</string>
+    <string name="apply_string">Применить</string>
+    <string name="about_me_string">О себе</string>
 </resources>
